@@ -250,11 +250,11 @@ with st.sidebar:
     top_n       = st.slider("Top N resultados", 3, 15, 5)
     semilla     = st.number_input("Semilla aleatoria", value=42, step=1)
     st.markdown("---")
-    st.caption("MinTexto v5 · Skip-gram con NumPy")
+    st.caption("MinTexto v5")
 
 # ── HEADER ────────────────────────────────────────────────────
 st.markdown('<div class="hero-title">🧠 MinTexto v5</div>', unsafe_allow_html=True)
-st.markdown('<div class="hero-sub">Pipeline Skip-gram · Embeddings de palabras desde cero con NumPy</div>', unsafe_allow_html=True)
+st.markdown('<div class="hero-sub"> Minería de texto</div>', unsafe_allow_html=True)
 st.markdown("---")
 
 # ── ENTRADA ───────────────────────────────────────────────────
