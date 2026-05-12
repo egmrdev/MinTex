@@ -1,7 +1,6 @@
-"""
-MinTexto v5 — Interfaz Streamlit para el Pipeline Skip-gram
-Ejecutar:  streamlit run MinTexto_v5.py
-"""
+
+# MinTexto v5 — Interfaz Streamlit para el Pipeline Skip-gram
+
 
 import re, string, pathlib, io
 import numpy as np
