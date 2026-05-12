@@ -378,7 +378,7 @@ if st.session_state.modelo:
             st.error(f'❌ "{pal}" no está en el vocabulario.')
             sugs = [p for p in m["vocab"] if p.startswith(pal[:3])][:6]
             if sugs: st.info("¿Quisiste decir? " + " · ".join(sugs))
-else:
+    else:
             sim_d = top_sim(pal, m["vocab"], m["vocab_inv"], m["Pe"], top_n)
             ctx_d = top_ctx(pal, m["vocab"], m["vocab_inv"], m["Pe"], m["Ps"], top_n)
             ca, cb = st.columns(2)
