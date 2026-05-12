@@ -1,22 +1,19 @@
-# 🧠 MinTexto v5 — Skip-gram desde cero con NumPy
+#  MinTexto v5 — Skip-gram 
 
 Aplicación web interactiva para aprender cómo funcionan los **embeddings de palabras** con el modelo **Skip-gram**, construido completamente con NumPy (sin PyTorch ni TensorFlow).
 
-## 🚀 Demo en línea
-
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://tu-app.streamlit.app)
 
 ## ¿Qué hace la app?
 
-- 📄 **Carga tu propio texto** (`.txt`, `.pdf` o `.docx`) o escríbelo directamente
-- 🔤 **Preprocesa** el corpus: limpieza, tokenización y eliminación de stopwords
-- 🔗 **Genera parejas Skip-gram** con ventana de contexto configurable
-- ⚡ **Entrena** la red neuronal en tiempo real con barra de progreso
-- 📐 **Similitud coseno** entre palabras (las más similares semánticamente)
-- 🎯 **Predicción de contexto** (co-ocurrencia)
-- 🔍 **Explorador interactivo**: escribe cualquier palabra y analízala
+-  **Carga tu propio texto** (`.txt`, `.pdf` o `.docx`) o escríbelo directamente
+-  **Preprocesa** el corpus: limpieza, tokenización y eliminación de stopwords
+-  **Genera parejas Skip-gram** con ventana de contexto configurable
+-  **Entrena** la red neuronal en tiempo real con barra de progreso
+-  **Similitud coseno** entre palabras (las más similares semánticamente)
+-  **Predicción de contexto** (co-ocurrencia)
+-  **Explorador interactivo**: escribe cualquier palabra y analízala
 
-## 📦 Instalación local
+##  Instalación local
 
 ```bash
 git clone https://github.com/tu-usuario/mintexto-deploy
@@ -25,7 +22,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## ⚙️ Hiperparámetros configurables
+##  Hiperparámetros configurables
 
 | Parámetro | Rango | Descripción |
 |---|---|---|
@@ -35,7 +32,7 @@ streamlit run app.py
 | Épocas | 100–2000 | Cuántas veces recorre el corpus completo |
 | Top N resultados | 3–15 | Cuántos resultados mostrar en las gráficas |
 
-## 🛠️ Stack técnico
+##  Stack técnico
 
 - **Python 3.10+**
 - `streamlit` — interfaz web
