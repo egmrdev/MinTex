@@ -1,5 +1,5 @@
 
-# MinTexto v5 — Interfaz Streamlit para el Pipeline Skip-gram
+# MinTexto v5 — Interfaz Streamlit 
 
 
 import re, string, pathlib, io
@@ -102,6 +102,7 @@ if _sw_ruta.exists():
     STOP_WORDS = {l.strip().lower() for l in _sw_ruta.read_text(encoding="utf-8").splitlines() if l.strip()}
 else:
     STOP_WORDS = {"a","al","de","del","el","en","es","la","las","lo","los","no","o","para","por","que","se","si","su","un","una","y"}
+
 
 # ── CORE FUNCTIONS ────────────────────────────────────────────
 def leer_bytes(data: bytes, ext: str) -> str:
@@ -247,11 +248,11 @@ with st.sidebar:
     top_n       = st.slider("Top N resultados", 3, 15, 5)
     semilla     = st.number_input("Semilla aleatoria", value=42, step=1)
     st.markdown("---")
-    st.caption("MinTexto v5")
+    st.caption("MinTexto v5 · Skip-gram con NumPy")
 
 # ── HEADER ────────────────────────────────────────────────────
 st.markdown('<div class="hero-title">🧠 MinTexto v5</div>', unsafe_allow_html=True)
-st.markdown('<div class="hero-sub"> Minería de texto</div>', unsafe_allow_html=True)
+st.markdown('<div class="hero-sub">Pipeline Skip-gram · Embeddings de palabras desde cero con NumPy</div>', unsafe_allow_html=True)
 st.markdown("---")
 
 # ── ENTRADA ───────────────────────────────────────────────────
@@ -378,20 +379,14 @@ if st.session_state.modelo:
             st.error(f'❌ "{pal}" no está en el vocabulario.')
             sugs = [p for p in m["vocab"] if p.startswith(pal[:3])][:6]
             if sugs: st.info("¿Quisiste decir? " + " · ".join(sugs))
-    else:
+        else:
             sim_d = top_sim(pal, m["vocab"], m["vocab_inv"], m["Pe"], top_n)
             ctx_d = top_ctx(pal, m["vocab"], m["vocab_inv"], m["Pe"], m["Ps"], top_n)
             ca, cb = st.columns(2)
             with ca:
-                # Agregamos key="explorador_sim" para que no choque con los de arriba
-                st.plotly_chart(fig_barras(sim_d, f'Similares a "{pal}"'), 
-                                use_container_width=True, 
-                                key="explorador_sim") 
+                st.plotly_chart(fig_barras(sim_d, f'Similares a "{pal}"'), use_container_width=True)
             with cb:
-                # Agregamos key="explorador_ctx"
-                st.plotly_chart(fig_barras(ctx_d, f'Contexto de "{pal}"', es_pct=True), 
-                                use_container_width=True, 
-                                key="explorador_ctx")
+                st.plotly_chart(fig_barras(ctx_d, f'Contexto de "{pal}"', es_pct=True), use_container_width=True)
 
             with st.expander("Tabla de Similitud coseno"):
                 df = pd.DataFrame(sim_d, columns=["Similitud","Palabra"])[["Palabra","Similitud"]]
