@@ -383,21 +383,10 @@ if st.session_state.modelo:
             sim_d = top_sim(pal, m["vocab"], m["vocab_inv"], m["Pe"], top_n)
             ctx_d = top_ctx(pal, m["vocab"], m["vocab_inv"], m["Pe"], m["Ps"], top_n)
             ca, cb = st.columns(2)
-            
             with ca:
-                # Usamos un key estático pero ÚNICO para esta sección
-                st.plotly_chart(
-                    fig_barras(sim_d, f'Similares a "{pal}"'), 
-                    use_container_width=True, 
-                    key="chart_sim_explorador" 
-                )
+                st.plotly_chart(fig_barras(sim_d, f'Similares a "{pal}"'), use_container_width=True, key="sim_explorer")
             with cb:
-                # Usamos otro key estático único para esta sección
-                st.plotly_chart(
-                    fig_barras(ctx_d, f'Contexto de "{pal}"', es_pct=True), 
-                    use_container_width=True, 
-                    key="chart_ctx_explorador"
-                )
+                st.plotly_chart(fig_barras(ctx_d, f'Contexto de "{pal}"', es_pct=True), use_container_width=True, key="ctx_explorer")
 
             with st.expander("Tabla de Similitud coseno"):
                 df = pd.DataFrame(sim_d, columns=["Similitud","Palabra"])[["Palabra","Similitud"]]
