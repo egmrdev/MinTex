@@ -96,14 +96,12 @@ hr { border-color: #1e1e42; }
 """, unsafe_allow_html=True)
 
 # ── STOP WORDS ────────────────────────────────────────────────
-STOP_WORDS = {
-    "a","al","algo","ante","asi","aunque","cada","como","con","cual",
-    "de","del","desde","donde","el","en","era","es","esa","ese","eso",
-    "esta","este","esto","fue","ha","hay","he","la","las","le","les",
-    "lo","los","mas","me","mi","muy","no","nos","o","para","pero",
-    "por","que","se","ser","si","sin","son","su","sus","te","tu",
-    "un","una","y","ya","yo","tambien",
-}
+# Cargar stop-words desde archivo externo
+_sw_ruta = pathlib.Path("stopwords-es.txt")
+if _sw_ruta.exists():
+    STOP_WORDS = {l.strip().lower() for l in _sw_ruta.read_text(encoding="utf-8").splitlines() if l.strip()}
+else:
+    STOP_WORDS = {"a","al","de","del","el","en","es","la","las","lo","los","no","o","para","por","que","se","si","su","un","una","y"}
 
 # ── CORE FUNCTIONS ────────────────────────────────────────────
 def leer_bytes(data: bytes, ext: str) -> str:
