@@ -1,4 +1,3 @@
-
 # MinTexto v5 — Interfaz Streamlit 
 
 
@@ -339,7 +338,7 @@ if st.session_state.modelo:
     # ── RESULTADOS ENTRENAMIENTO ─────────────────────────────────────────
     st.markdown("---")
     st.markdown('<div class="sec-head">⚡ Resultados del Entrenamiento</div>', unsafe_allow_html=True)
-    st.plotly_chart(fig_perdida(hist), use_container_width=True)
+    st.plotly_chart(fig_perdida(hist), use_container_width=True, key="fig_perdida")
 
     # ── SIMILITUD COSENO Y CONTEXTO DEMO ──────────────────────────────────────
     st.markdown("---")
@@ -348,18 +347,18 @@ if st.session_state.modelo:
     from collections import Counter
     pals_demo = [p for p, c in Counter(tokens).most_common(3)]
     cols_s = st.columns(3)
-    for col, pal in zip(cols_s, pals_demo):
+    for i, (col, pal) in enumerate(zip(cols_s, pals_demo)):
         datos = top_sim(pal, vocab, vocab_inv, Pe, top_n)
         with col:
-            st.plotly_chart(fig_barras(datos, f'Similares a "{pal}"', es_pct=False), use_container_width=True)
+            st.plotly_chart(fig_barras(datos, f'Similares a "{pal}"', es_pct=False), use_container_width=True, key=f"sim_demo_{i}")
 
     st.markdown("---")
     st.markdown('<div class="sec-head">🎯 Predicción de Contexto — probabilidad de co-ocurrencia</div>', unsafe_allow_html=True)
     cols_c = st.columns(3)
-    for col, pal in zip(cols_c, pals_demo):
+    for i, (col, pal) in enumerate(zip(cols_c, pals_demo)):
         datos = top_ctx(pal, vocab, vocab_inv, Pe, Ps, top_n)
         with col:
-            st.plotly_chart(fig_barras(datos, f'Contexto de "{pal}"', es_pct=True), use_container_width=True)
+            st.plotly_chart(fig_barras(datos, f'Contexto de "{pal}"', es_pct=True), use_container_width=True, key=f"ctx_demo_{i}")
 
     # ── EXPLORADOR INTERACTIVO ────────────────────────────────────
     st.markdown("---")
@@ -379,7 +378,7 @@ if st.session_state.modelo:
             st.error(f'❌ "{pal}" no está en el vocabulario.')
             sugs = [p for p in m["vocab"] if p.startswith(pal[:3])][:6]
             if sugs: st.info("¿Quisiste decir? " + " · ".join(sugs))
-    else:
+        else:
             sim_d = top_sim(pal, m["vocab"], m["vocab_inv"], m["Pe"], top_n)
             ctx_d = top_ctx(pal, m["vocab"], m["vocab_inv"], m["Pe"], m["Ps"], top_n)
             ca, cb = st.columns(2)
