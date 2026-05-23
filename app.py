@@ -25,6 +25,10 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
 .material-icons {
     display: none !important;
 }
+[data-testid="stSidebarCollapseButton"] svg,
+[data-testid="stSidebarContent"] button svg {
+    display: block !important;
+}
 [data-testid="stAppViewContainer"] {
     background: linear-gradient(135deg, #080814 0%, #0c0c1e 60%, #10102a 100%);
 }
