@@ -1,4 +1,4 @@
- # MinTexto v5 — Interfaz Streamlit 
+# MinTexto v5 — Interfaz Streamlit 
 
 
 import re, string, pathlib, io
