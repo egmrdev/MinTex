@@ -1,5 +1,4 @@
 # MinTexto v5 — Interfaz Streamlit 
-
 import re, string, pathlib, io
 from collections import Counter
 import numpy as np
@@ -26,20 +25,20 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
     display: none !important;
 }
 [data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #0f0f2e 0%, #141432 60%, #181845 100%);
+    background: linear-gradient(135deg, #080814 0%, #0c0c1e 60%, #10102a 100%);
 }
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #131330 0%, #181840 100%);
-    border-right: 1px solid #2a2a55;
+    background: linear-gradient(180deg, #0a0a1c 0%, #0e0e28 100%);
+    border-right: 1px solid #1e1e42;
 }
-[data-testid="collapsedControl"] {
+button[kind="header"] {
     color: #a5b4fc !important;
-    background: rgba(129,140,248,0.15) !important;
-    border: 1px solid rgba(129,140,248,0.3) !important;
+    background: rgba(129,140,248,0.12) !important;
+    border-radius: 8px !important;
 }
-[data-testid="collapsedControl"] svg {
+button[kind="header"] svg {
     fill: #a5b4fc !important;
-    stroke: #a5b4fc !important;
+    color: #a5b4fc !important;
 }
 
 .hero-title {
