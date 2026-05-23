@@ -420,22 +420,3 @@ if st.session_state.modelo:
                 st.plotly_chart(fig_barras(sim_d, f'Similares a "{pal}"'), use_container_width=True, key="sim_explorer")
             with cb:
                 st.plotly_chart(fig_barras(ctx_d, f'Contexto de "{pal}"', es_pct=True), use_container_width=True, key="ctx_explorer")
-    with c1:
-        consulta = st.text_input("Palabra:", placeholder="ej: mineria", label_visibility="collapsed")
-    with c2:
-        buscar = st.button("Buscar")
-
-    if buscar and consulta.strip():
-        pal = consulta.strip().lower()
-        if pal not in m["vocab"]:
-            st.error(f'"{pal}" no está en el vocabulario.')
-            sugs = [p for p in m["vocab"] if p.startswith(pal[:3])][:6]
-            if sugs: st.info("Quizás quisiste decir: " + " · ".join(sugs))
-        else:
-            sim_d = top_sim(pal, m["vocab"], m["vocab_inv"], m["Pe"], top_n)
-            ctx_d = top_ctx(pal, m["vocab"], m["vocab_inv"], m["Pe"], m["Ps"], top_n)
-            ca, cb = st.columns(2)
-            with ca:
-                st.plotly_chart(fig_barras(sim_d, f'Similares a "{pal}"'), use_container_width=True, key="sim_explorer")
-            with cb:
-                st.plotly_chart(fig_barras(ctx_d, f'Contexto de "{pal}"', es_pct=True), use_container_width=True, key="ctx_explorer")
