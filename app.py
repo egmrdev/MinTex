@@ -17,6 +17,14 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
     font-family: 'DM Sans', sans-serif !important;
 }
 
+[data-testid="stFileUploaderDropzoneInstructions"] svg,
+[data-testid="stFileUploaderDropzone"] svg,
+[data-baseweb="radio"] svg,
+[data-testid="stIconMaterial"],
+.material-symbols-rounded,
+.material-icons {
+    display: none !important;
+}
 [data-testid="stAppViewContainer"] {
     background: linear-gradient(135deg, #080814 0%, #0c0c1e 60%, #10102a 100%);
 }
@@ -24,13 +32,17 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
     background: linear-gradient(180deg, #0a0a1c 0%, #0e0e28 100%);
     border-right: 1px solid #1e1e42;
 }
-[data-testid="stIconMaterial"],
-.material-symbols-rounded,
-.material-icons {
-    display: none !important;
+button[kind="header"] {
+    color: #a5b4fc !important;
+    background: rgba(129,140,248,0.12) !important;
+    border-radius: 8px !important;
+}
+button[kind="header"] svg {
+    fill: #a5b4fc !important;
+    color: #a5b4fc !important;
 }
 
-
+.hero-title {
     font-family: 'DM Serif Display', serif !important;
     font-size: 3.6rem; font-weight: 400;
     background: linear-gradient(90deg, #818cf8, #c084fc, #38bdf8);
@@ -84,7 +96,7 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
 .stSlider label { color: #8888b8 !important; font-size: 0.82rem !important; }
 hr { border-color: #1e1e42; }
 [data-testid="stExpanderHeader"] { color: #a5b4fc !important; font-weight: 600 !important; }
-[data-testid="stExpanderHeader"] svg { color: #a5b4fc !important; stroke: #a5b4fc !important; }
+[data-testid="stExpanderHeader"] svg { color: #a5b4fc !important; stroke: #a5b4fc !important; display: block !important; }
 </style>
 """, unsafe_allow_html=True)
 
