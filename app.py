@@ -298,8 +298,8 @@ with st.sidebar:
     st.markdown("---")
     st.caption("MinTexto v5")
 
-st.markdown('<div class="hero-title">MinTexto v5</div>', unsafe_allow_html=True)
-st.markdown('<div class="hero-sub">Minería de texto · Word2Vec / Skip-gram</div>', unsafe_allow_html=True)
+st.markdown('<div class="hero-title">Minería de texto</div>', unsafe_allow_html=True)
+st.markdown('<div class="hero-sub">MinTexto v5</div>', unsafe_allow_html=True)
 st.markdown("---")
 
 st.markdown('<div class="sec-head">Corpus de Entrenamiento</div>', unsafe_allow_html=True)
