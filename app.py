@@ -17,6 +17,27 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
     font-family: 'DM Sans', sans-serif !important;
 }
 
+/* Restaurar la fuente de iconos Material — DM Sans la pisaba y se veía el texto "key…" en lugar del icono */
+[data-testid="stIconMaterial"],
+.material-symbols-rounded,
+.material-symbols-outlined,
+.material-icons,
+span[class*="material-symbols"],
+span[class*="material-icons"] {
+    font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', 'Material Icons' !important;
+    font-feature-settings: 'liga' !important;
+    -webkit-font-feature-settings: 'liga' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    word-wrap: normal !important;
+    white-space: nowrap !important;
+    direction: ltr !important;
+    -webkit-font-smoothing: antialiased !important;
+    color: #a5b4fc !important;
+}
+
 [data-testid="stAppViewContainer"] {
     background: linear-gradient(135deg, #080814 0%, #0c0c1e 60%, #10102a 100%);
 }
@@ -380,6 +401,25 @@ if st.session_state.modelo:
 
     m  = st.session_state.modelo
     c1, c2 = st.columns([4, 1])
+    with c1:
+        consulta = st.text_input("Palabra:", placeholder="ej: mineria", label_visibility="collapsed")
+    with c2:
+        buscar = st.button("Buscar")
+
+    if buscar and consulta.strip():
+        pal = consulta.strip().lower()
+        if pal not in m["vocab"]:
+            st.error(f'"{pal}" no está en el vocabulario.')
+            sugs = [p for p in m["vocab"] if p.startswith(pal[:3])][:6]
+            if sugs: st.info("Quizás quisiste decir: " + " · ".join(sugs))
+        else:
+            sim_d = top_sim(pal, m["vocab"], m["vocab_inv"], m["Pe"], top_n)
+            ctx_d = top_ctx(pal, m["vocab"], m["vocab_inv"], m["Pe"], m["Ps"], top_n)
+            ca, cb = st.columns(2)
+            with ca:
+                st.plotly_chart(fig_barras(sim_d, f'Similares a "{pal}"'), use_container_width=True, key="sim_explorer")
+            with cb:
+                st.plotly_chart(fig_barras(ctx_d, f'Contexto de "{pal}"', es_pct=True), use_container_width=True, key="ctx_explorer")
     with c1:
         consulta = st.text_input("Palabra:", placeholder="ej: mineria", label_visibility="collapsed")
     with c2:
