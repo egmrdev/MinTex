@@ -41,25 +41,6 @@ button[kind="header"] svg {
     fill: #a5b4fc !important;
     color: #a5b4fc !important;
 }
-[data-testid="stSidebarCollapseButton"] button,
-[data-testid="stSidebarCollapseButton"],
-section[data-testid="stSidebar"] ~ div button,
-button[aria-label="Close sidebar"],
-button[aria-label="Collapse sidebar"] {
-    background: rgba(129,140,248,0.2) !important;
-    border-radius: 50% !important;
-    width: 32px !important;
-    height: 32px !important;
-}
-[data-testid="stSidebarCollapseButton"] svg,
-section[data-testid="stSidebar"] ~ div button svg,
-button[aria-label="Close sidebar"] svg,
-button[aria-label="Collapse sidebar"] svg {
-    fill: #a5b4fc !important;
-    stroke: #a5b4fc !important;
-    color: #a5b4fc !important;
-    opacity: 1 !important;
-}
 
 .hero-title {
     font-family: 'DM Serif Display', serif !important;
