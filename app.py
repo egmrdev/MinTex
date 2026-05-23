@@ -1,6 +1,5 @@
 # MinTexto v5 — Interfaz Streamlit 
 
-
 import re, string, pathlib, io
 from collections import Counter
 import numpy as np
@@ -87,6 +86,7 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
 .stSlider label { color: #8888b8 !important; font-size: 0.82rem !important; }
 hr { border-color: #1e1e42; }
 [data-testid="stExpanderHeader"] { color: #a5b4fc !important; font-weight: 600 !important; }
+[data-testid="stExpanderHeader"] svg { color: #a5b4fc !important; stroke: #a5b4fc !important; display: block !important; }
 </style>
 """, unsafe_allow_html=True)
 
