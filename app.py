@@ -24,8 +24,13 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
     background: linear-gradient(180deg, #0a0a1c 0%, #0e0e28 100%);
     border-right: 1px solid #1e1e42;
 }
+[data-testid="stIconMaterial"],
+.material-symbols-rounded,
+.material-icons {
+    display: none !important;
+}
 
-.hero-title {
+
     font-family: 'DM Serif Display', serif !important;
     font-size: 3.6rem; font-weight: 400;
     background: linear-gradient(90deg, #818cf8, #c084fc, #38bdf8);
