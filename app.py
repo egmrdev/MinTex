@@ -172,12 +172,13 @@ def entrenar_con_progreso(vocab, parejas, dim, tasa, epocas, semilla):
 
 def top_sim(pal, vocab, vocab_inv, Pe, n):
     if pal not in vocab: return []
-    v = Pe[vocab[pal]]
-    def cos(a, b):
-        nn = np.linalg.norm(a) * np.linalg.norm(b)
-        return float(np.dot(a,b)/nn) if nn > 0 else 0.0
-    s = [(cos(v, Pe[i]), vocab_inv[i]) for i in range(len(vocab_inv)) if i != vocab[pal]]
-    s.sort(reverse=True); return s[:n]
+    v      = Pe[vocab[pal]]
+    norms  = np.linalg.norm(Pe, axis=1)
+    norm_v = np.linalg.norm(v)
+    sims   = np.where(norms > 0, (Pe @ v) / (norms * norm_v + 1e-10), 0.0)
+    sims[vocab[pal]] = -1  # excluir la palabra misma
+    top_idx = np.argsort(sims)[::-1][:n]
+    return [(float(sims[i]), vocab_inv[i]) for i in top_idx]
 
 def top_ctx(pal, vocab, vocab_inv, Pe, Ps, n):
     if pal not in vocab: return []
