@@ -18,7 +18,14 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
     font-family: 'DM Sans', sans-serif !important;
 }
 
-[data-testid="stAppViewContainer"] {
+[data-testid="stFileUploaderDropzoneInstructions"] svg,
+[data-testid="stFileUploaderDropzone"] svg,
+[data-baseweb="radio"] svg,
+[data-testid="stIconMaterial"],
+.material-symbols-rounded,
+.material-icons {
+    display: none !important;
+}
     background: linear-gradient(135deg, #080814 0%, #0c0c1e 60%, #10102a 100%);
 }
 [data-testid="stSidebar"] {
@@ -313,7 +320,7 @@ if st.session_state.modelo:
     st.plotly_chart(fig_perdida(hist), use_container_width=True, key="fig_perdida")
 
     st.markdown("---")
-    st.markdown('<div class="sec-head">Similitud Coseno — Palabras con significado parecido</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sec-head">Similitud Coseno</div>', unsafe_allow_html=True)
 
     pals_demo = [p for p, c in Counter(tokens).most_common(3)]
     cols_s = st.columns(3)
@@ -323,7 +330,7 @@ if st.session_state.modelo:
             st.plotly_chart(fig_barras(datos, f'Similares a "{pal}"', es_pct=False), use_container_width=True, key=f"sim_demo_{i}")
 
     st.markdown("---")
-    st.markdown('<div class="sec-head">Predicción de Contexto — Probabilidad de co-ocurrencia</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sec-head">Palabras que aparecen juntas en el texto</div>', unsafe_allow_html=True)
     cols_c = st.columns(3)
     for i, (col, pal) in enumerate(zip(cols_c, pals_demo)):
         datos = top_ctx(pal, vocab, vocab_inv, Pe, Ps, top_n)
