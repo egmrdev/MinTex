@@ -17,14 +17,6 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
     font-family: 'DM Sans', sans-serif !important;
 }
 
-[data-testid="stFileUploaderDropzoneInstructions"] svg,
-[data-testid="stFileUploaderDropzone"] svg,
-[data-baseweb="radio"] svg,
-[data-testid="stIconMaterial"],
-.material-symbols-rounded,
-.material-icons {
-    display: none !important;
-}
 [data-testid="stAppViewContainer"] {
     background: linear-gradient(135deg, #080814 0%, #0c0c1e 60%, #10102a 100%);
 }
@@ -32,14 +24,50 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
     background: linear-gradient(180deg, #0a0a1c 0%, #0e0e28 100%);
     border-right: 1px solid #1e1e42;
 }
-button[kind="header"] {
+
+/* Botón de colapsar sidebar — flecha visible */
+button[kind="header"],
+button[kind="headerNoPadding"],
+[data-testid="stSidebarCollapseButton"] button,
+[data-testid="stBaseButton-headerNoPadding"] {
     color: #a5b4fc !important;
     background: rgba(129,140,248,0.12) !important;
     border-radius: 8px !important;
 }
-button[kind="header"] svg {
+button[kind="header"] svg,
+button[kind="headerNoPadding"] svg,
+[data-testid="stSidebarCollapseButton"] svg,
+[data-testid="stBaseButton-headerNoPadding"] svg,
+button[kind="header"] [data-testid="stIconMaterial"],
+[data-testid="stSidebarCollapseButton"] [data-testid="stIconMaterial"] {
     fill: #a5b4fc !important;
     color: #a5b4fc !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Icono del uploader (la nubecita) */
+[data-testid="stFileUploaderDropzone"] svg,
+[data-testid="stFileUploaderDropzoneInstructions"] svg,
+[data-testid="stFileUploaderDropzone"] [data-testid="stIconMaterial"] {
+    fill: #a5b4fc !important;
+    color: #a5b4fc !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Flechitas de los expanders (chevron abajo) */
+[data-testid="stExpander"] svg,
+[data-testid="stExpander"] [data-testid="stIconMaterial"],
+details summary svg {
+    fill: #a5b4fc !important;
+    color: #a5b4fc !important;
+    stroke: #a5b4fc !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .hero-title {
