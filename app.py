@@ -379,7 +379,7 @@ if st.session_state.modelo:
     st.plotly_chart(fig_perdida(hist), use_container_width=True, key="fig_perdida")
 
     st.markdown("---")
-    st.markdown('<div class="sec-head">Similitud Coseno</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sec-head">Cercanía geométrica entre embeddings (Similitud Coseno)</div>', unsafe_allow_html=True)
 
     pals_demo = [p for p, c in Counter(tokens).most_common(3)]
     cols_s = st.columns(3)
@@ -389,7 +389,7 @@ if st.session_state.modelo:
             st.plotly_chart(fig_barras(datos, f'Similares a "{pal}"', es_pct=False), use_container_width=True, key=f"sim_demo_{i}")
 
     st.markdown("---")
-    st.markdown('<div class="sec-head">Palabras que aparecen juntas en el texto</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sec-head">Probabilidad de contexto (Softmax)</div>', unsafe_allow_html=True)
     cols_c = st.columns(3)
     for i, (col, pal) in enumerate(zip(cols_c, pals_demo)):
         datos = top_ctx(pal, vocab, vocab_inv, Pe, Ps, top_n)
