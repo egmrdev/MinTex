@@ -7,7 +7,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 
-st.set_page_config(page_title="Min Texto", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="MinTexto v5", layout="wide", initial_sidebar_state="expanded")
 
 st.markdown("""
 <style>
@@ -25,11 +25,21 @@ html, body, div, p, span, h1, h2, h3, h4, h5, h6, button, input, label, textarea
 .material-icons {
     display: none !important;
 }
-    background: linear-gradient(135deg, #080814 0%, #0c0c1e 60%, #10102a 100%);
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(135deg, #0f0f2e 0%, #141432 60%, #181845 100%);
 }
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #0a0a1c 0%, #0e0e28 100%);
-    border-right: 1px solid #1e1e42;
+    background: linear-gradient(180deg, #131330 0%, #181840 100%);
+    border-right: 1px solid #2a2a55;
+}
+[data-testid="collapsedControl"] {
+    color: #a5b4fc !important;
+    background: rgba(129,140,248,0.15) !important;
+    border: 1px solid rgba(129,140,248,0.3) !important;
+}
+[data-testid="collapsedControl"] svg {
+    fill: #a5b4fc !important;
+    stroke: #a5b4fc !important;
 }
 
 .hero-title {
@@ -237,9 +247,9 @@ with st.sidebar:
     top_n       = st.slider("No. de resultados", 3, 15, 5)
     semilla     = st.number_input("Semilla aleatoria", value=42, step=1)
     st.markdown("---")
-    st.caption("Min Texto")
+    st.caption("MinTexto v5")
 
-st.markdown('<div class="hero-title">Min Texto</div>', unsafe_allow_html=True)
+st.markdown('<div class="hero-title">MinTexto v5</div>', unsafe_allow_html=True)
 st.markdown('<div class="hero-sub">Minería de texto · Word2Vec / Skip-gram</div>', unsafe_allow_html=True)
 st.markdown("---")
 
