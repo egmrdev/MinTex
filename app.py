@@ -241,7 +241,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("**Hiperparámetros**")
     ventana     = st.slider("Ventana de contexto", 1, 5, 2)
-    dimensiones = st.slider("Dimensiones del embedding", 10, 200, 50, step=10)
+    dimensiones = st.slider("Dimensiones del embedding", 10, 500, 50, step=10)
     tasa        = st.select_slider("Tasa de aprendizaje", [0.001,0.005,0.01,0.05,0.1], value=0.01)
     epocas      = st.slider("Épocas", 100, 2000, 500, step=100)
     top_n       = st.slider("Top N resultados", 3, 15, 5)
