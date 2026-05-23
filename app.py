@@ -1,4 +1,4 @@
-# MinTexto v5 — Interfaz Streamlit 
+ # MinTexto v5 — Interfaz Streamlit 
 
 
 import re, string, pathlib, io
@@ -144,10 +144,10 @@ def softmax(x):
     e = np.exp(x - x.max()); return e / e.sum()
 
 def entrenar_con_progreso(vocab, parejas, dim, tasa, epocas, semilla):
-    np.random.seed(semilla)
+    rng = np.random.default_rng(semilla)
     V, E = len(vocab), dim
-    Pe = np.random.uniform(-0.5, 0.5, (V, E))
-    Ps = np.random.uniform(-0.5, 0.5, (E, V))
+    Pe = (rng.random((V, E)) - 0.5) / E
+    Ps = (rng.random((E, V)) - 0.5) / E
     hist = []
     barra = st.progress(0, text="Entrenando…")
     c1, c2 = st.columns(2)
@@ -176,7 +176,7 @@ def top_sim(pal, vocab, vocab_inv, Pe, n):
     norms  = np.linalg.norm(Pe, axis=1)
     norm_v = np.linalg.norm(v)
     sims   = np.where(norms > 0, (Pe @ v) / (norms * norm_v + 1e-10), 0.0)
-    sims[vocab[pal]] = -1  # excluir la palabra misma
+    sims[vocab[pal]] = -1
     top_idx = np.argsort(sims)[::-1][:n]
     return [(float(sims[i]), vocab_inv[i]) for i in top_idx]
 
